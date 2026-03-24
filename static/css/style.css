@@ -1,0 +1,21 @@
+body{
+  background-color: black;
+}
+body span,
+body p{
+color: white;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.initials{
+  border: 1px solid #f0c040;
+  padding:5px;
+  border-radius: 20%;
+  background-color: #f0c040;
+  color: black;
+}
+
