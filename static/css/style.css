@@ -13,9 +13,54 @@ a{
 
 .initials{
   border: 1px solid #f0c040;
-  padding:5px;
+  padding: 3px 5px;
   border-radius: 20%;
   background-color: #f0c040;
   color: black;
 }
 
+.navbar .nav-link{
+  font-size: 15px;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus{
+  color: #f0c040 !important;
+}
+
+@media (max-width: 991.98px){
+  .navbar .navbar-collapse{
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 0.35rem 0.6rem;
+  }
+}
+
+.line{
+  color: white;
+  opacity: 0.6;
+}
+.btn{
+  border: 1px solid #f0c040;
+  background-color: #f0c040;
+}
+
+.footer-actions .btn{
+  padding: 0.45rem 0.9rem;
+}
+
+.footer .email,
+.footer .contact{
+  max-width: 100%;
+}
+
+@media (max-width: 991.98px){
+  .footer-actions .email .line,
+  .footer-actions .contact .line{
+    width: 100%;
+    margin-top: 0.35rem;
+  }
+}
