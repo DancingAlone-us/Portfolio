@@ -1,0 +1,99 @@
+{
+  "name": "Drabya Hamal",
+  "title": "AI & Web Development Enthusiast",
+  "location": "Sinamangal, Kathmandu",
+  "email": "drabyahamal.2@gmail.com",
+  "summary": "AI undergraduate with practical experience in web development, content management, and multimedia creation through an internship at Geofinity Solutions Pvt. Ltd. Skilled in HTML, CSS, JavaScript, Python and Git, with a strong foundation in responsive design and collaborative teamwork. Eager to apply technical skills, learn from industry professionals, and contribute effectively in a technology-focused internship role.",
+
+  "skills": {
+    "Technical": ["HTML", "CSS", "JavaScript", "Python", "Flask", "Git", "Responsive Design"],
+    "Design & Media": ["Basic Photoshop", "Adobe Premiere Pro", "Canva", "Runway", "Interaction Design"],
+    "Soft Skills": ["Public Speaking", "Critical Thinking", "Time Management"]
+  },
+
+  "experience": [
+    {
+      "role": "Intern — Front End Developer",
+      "company": "Geofinity Solutions Pvt Ltd",
+      "period": "Jun 2025 – Sept 2025",
+      "points": [
+        "Designed the internal web page using the company's ERP system's page builder.",
+        "Customized page layouts, added dynamic content, and ensured responsive design across devices.",
+        "Gained hands-on experience with web technologies and version control (Git)."
+      ]
+    },
+    {
+      "role": "Intern — Content Manager",
+      "company": "Geofinity Solutions Pvt Ltd",
+      "period": "Jun 2025 – Sept 2025",
+      "points": [
+        "Produced engaging marketing and explainer videos for the company.",
+        "Worked with tools like Runway, Canva, and Adobe Premiere Pro.",
+        "Provided an animated product demo tailored for the company's new application."
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "BSc (Hons) in Computer Science — Artificial Intelligence",
+      "institution": "The British College, Kathmandu",
+      "period": "2024 – 2028",
+      "points": [
+        "Built a full-stack website using HTML, CSS, JavaScript, Python, and Flask.",
+        "Created a command-line based software for a car company.",
+        "Developed the front end for a movie site."
+      ]
+    },
+    {
+      "degree": "+2 in Science",
+      "institution": "Global School of Science, Kathmandu",
+      "period": "2022 – 2024",
+      "points": [
+        "Passed out with a GPA of 3.59/4.0."
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "Full-Stack Website",
+      "tech": ["HTML", "CSS", "JavaScript", "Python", "Flask"],
+      "description": "A complete full-stack web application built as part of my BSc coursework, covering front-end UI and a Flask-powered back end.",
+      "icon": "bi-globe2"
+    },
+    {
+      "title": "Car Company CLI Software",
+      "tech": ["Python"],
+      "description": "A command-line based management tool developed for a car company, handling core business logic via a clean terminal interface.",
+      "icon": "bi-terminal-fill"
+    },
+    {
+      "title": "Movie Site Front End",
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "description": "A responsive, visually engaging front end for a movie browsing website with modern UI components.",
+      "icon": "bi-film"
+    },
+    {
+      "title": "Geofinity Product Demo",
+      "tech": ["Runway", "Adobe Premiere Pro", "Canva"],
+      "description": "An animated product demo video produced for Geofinity Solutions' new application, showcasing features to prospective clients.",
+      "icon": "bi-play-circle-fill"
+    }
+  ],
+
+  "references": [
+    {
+      "name": "Jyoti Khanal",
+      "title": "CEO, Geofinity Solutions Pvt. Ltd.",
+      "phone": "9843820521",
+      "email": "jkhanals@gmail.com"
+    },
+    {
+      "name": "Yubraj Shahi",
+      "title": "Sr. Web Developer",
+      "phone": "9811282609",
+      "email": "yubraj.shahi@gmail.com"
+    }
+  ]
+}
