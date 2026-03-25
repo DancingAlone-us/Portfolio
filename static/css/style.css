@@ -64,3 +64,29 @@ a{
     margin-top: 0.35rem;
   }
 }
+
+.btn-hero{
+  border: 1px solid white;
+  border-radius: 25%;
+  padding: 2px;
+}
+
+.rightCol{
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 25%;
+}
+
+numbers{
+  color: #f0c040;
+}
+
+.info{
+  color: gray;
+}
+
+.skills{
+  border: 1px solid black;
+  border-radius: 25%;
+  padding: 2px;
+}

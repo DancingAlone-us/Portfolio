@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block  head %}
+<title>Drabya Hamal - Portfolio</title>
+<meta name="keywords" content="drabya, hamal, portfolio">
+<meta name="description" content="A portfolio website of Drabya Hamal">
+{% endblock %}
+
+{% block main %}
+
+<!--Banner-->
+
+<div class="container mx-auto d-flex justify-content-between">
+    <div class="col-lg-6 col-m-4 d-inline">
+        <div class="location">
+            <span><i class="bi bi-geo-alt-fill"></i> Kathmandu, Nepal </span>
+        </div>
+        <div class="intro fs-1 col-lg-4">
+            <span>Hi, I'm <span class="fname">Drabya Hamal</span></span>
+        </div>
+        <div class="smallProfile">
+            <ul class="d-flex justify-content-around">
+                <li>AI undergraduate</li>
+                <li>Web Developer</li>
+                <li>Content Creator</li>
+            </ul>
+        </div>
+        <div class="bigProfile">
+            <span>AI undergraduate with practical experience in web development, content management, and multimedia creation through an internship at Geofinity Solutions Pvt. Ltd. Skilled in HTML, CSS, JavaScript, Python and Git, with a strong foundation in responsive design and collaborative teamwork. </span>
+        </div>
+
+        <div class="col-lg-6 d-flex">
+            <button class="btn text-dark fw-bold"><a href="#">View My Work <i class="bi bi-arrow-right"></i></a></button>
+            <button class="bt-hero text-light fw-bold"> <a href="#"> Contact Me </a> </button>
+        </div>
+    </div>
+    <div class="col-lg-6 col-m-4 rightCol">
+        <div class="profile mx-auto">
+            <div class="profileImg">
+                <img src="/static/images/profile.jpeg" alt="profile picture">
+            </div>
+            <div class="numbers d-flex justify-content-around">
+                <div class="intern d-block">
+                    <span>2 <span class="info"> INTERNSHIPS </span></span>
+                </div><br>
+                <div class="projects d-block">
+                    <span>4 <span class="info"> PROJECTS </span></span>
+                </div><br>
+                <div class="tech d-block">
+                    <span> 7+ <span class="info"> Tech Skills </span></span>
+                </div>
+            </div>
+
+            <div class="skill d-flex col-lg-3 gap-2">
+                <span class="skills">Python</span>
+                <span class="skills">Flask</span>
+                <span class="skills">JavaScript</span>
+                <span class="skills">HTML/CSS</span>
+                <span class="skills">Git </span>
+            </div>
+        </div>
+    </div>
+</div>
