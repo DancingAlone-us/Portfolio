@@ -426,3 +426,14 @@ a{
     font-size: 0.72rem;
   }
 }
+
+.about-desc{
+  color: gray;
+  text-align: justify;
+  
+}
+
+ .about-head{
+  font-size: 64px;
+  text-align: justify;
+ }

@@ -6,5 +6,13 @@
 {% endblock %}
 
 {% block main %}
-<h1 class="text-light">This is about page</h1>
+<!--Who AM I?-->
+<section class="about-secton py-5">
+    <div class="container">
+        <p class="narrate mb-2">WHO I AM</p>
+        <h1 class="section-head text-light mb-4 about-head fw-bold">About Me</h1>
+
+        <div class="col-lg-6 about-desc">{{ data.summary }}</div>
+    </div>
+</section><hr class="line">
 {% endblock %}
