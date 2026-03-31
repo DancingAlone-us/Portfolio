@@ -7,7 +7,7 @@
 
 {% block main %}
 
-<!--Banner-->
+<!--Hero Introduction-->>
 
 <section class="hero-section d-flex align-items-center">
   <div class="container">
@@ -28,7 +28,7 @@
           <a href="{{ url_for('projects') }}" class="btn btn-primary-custom btn-lg">
             View My Work <i class="bi bi-arrow-right ms-2"></i>
           </a>
-          <a href="{{ url_for('contact') }}" class="btn-hero btn-outline-custom btn-lg">
+          <a href="{{ url_for('contact') }}" class="btn btn-outline-custom btn-lg btn-contact">
             Contact Me
           </a>
         </div>
@@ -71,4 +71,6 @@
   <div class="hero-bg-blob blob-1"></div>
   <div class="hero-bg-blob blob-2"></div>
 </section>
+
+
 {% endblock %}

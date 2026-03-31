@@ -11,6 +11,8 @@ a{
   color: white;
 }
 
+/* NAVBAR */
+
 .initials{
   border: 1px solid #f0c040;
   padding: 3px 5px;
@@ -48,6 +50,8 @@ a{
   background-color: #f0c040;
 }
 
+/* FOOTER */
+
 .footer-actions .btn{
   padding: 0.45rem 0.9rem;
 }
@@ -64,6 +68,8 @@ a{
     margin-top: 0.35rem;
   }
 }
+
+/* HERO INTRODUCTION */
 
 .hero-section {
   min-height: calc(100vh - 72px);
@@ -196,10 +202,12 @@ a{
   border: 1px solid rgba(240,192,64,0.2);
 }
 
-.btn-hero{
-  background-color: black;
+.btn-contact{
+    background-color: black;
   color: white;
-  padding: 10px;
+  padding: 10px 40px;
+  border: 1px solid gray;
+  border-radius: 50px;
 }
 
 .pfp{
