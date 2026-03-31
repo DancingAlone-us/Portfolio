@@ -6,7 +6,7 @@ from flask import Flask, render_template
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path="/static")
 app.secret_key = 'secret123'
 
-with open(os.path.join(os.path.dirname(__file__),'data.json'),'r') as f:
+with open(os.path.join(os.path.dirname(__file__), 'data.json'), 'r', encoding='utf-8') as f:
     portfolio_data = json.load(f)
 
 

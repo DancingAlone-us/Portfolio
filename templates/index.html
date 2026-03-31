@@ -139,4 +139,34 @@
   </div>
 </section>
 
+<!--Experience-->
+<section class="experience-section py-5">
+  <div class="container">
+    <p class="narrate mb-2">WHERE I'VE WORKED</p>
+    <h2 class="section-head text-light mb-4">Experience</h2>
+
+    <div class="row g-4">
+      {% for exp in data.experience %}
+      <div class="col-12">
+        <article class="exp-card h-100">
+          <div class="exp-card-top d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+            <div>
+              <h3 class="exp-role mb-1">{{ exp.role }}</h3>
+              <p class="exp-company mb-0"><i class="bi bi-building me-1"></i>{{ exp.company }}</p>
+            </div>
+            <span class="exp-period">{{ exp.period }}</span>
+          </div>
+
+          <ul class="exp-bullets mb-0">
+            {% for point in exp.points %}
+            <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 {% endblock %}
