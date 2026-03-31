@@ -105,8 +105,38 @@
 </section>
 
 <!--Skills & Tools-->
-<div class="narrate">WHAT I KNOW</div>
-<div class="section-head text-light">Skills & Tools</div>
+<section class="skills-section py-5">
+  <div class="container">
+    <p class="narrate mb-2">WHAT I KNOW</p>
+    <h2 class="section-head text-light mb-4">Skills & Tools</h2>
 
+    <div class="row g-4">
+      {% for category, skill_list in data.skills.items() %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="skills-card h-100">
+          <div class="skills-card-top mb-3">
+            <span class="skills-icon" aria-hidden="true">
+              {% if category == 'Technical' %}
+              <i class="bi bi-code-slash"></i>
+              {% elif category == 'Design & Media' %}
+              <i class="bi bi-palette2"></i>
+              {% else %}
+              <i class="bi bi-people"></i>
+              {% endif %}
+            </span>
+            <h3 class="skill-head mb-0">{{ category }}</h3>
+          </div>
+
+          <div class="skills-chip-wrap">
+            {% for skill in skill_list %}
+            <span class="tool-chip">{{ skill }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 {% endblock %}
