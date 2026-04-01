@@ -1,0 +1,20 @@
+# Python cache and virtual env
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+.venv/
+
+# Environment files (secrets)
+.env
+.env.*
+!.env.example
+
+# Flask instance/config leftovers
+instance/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/

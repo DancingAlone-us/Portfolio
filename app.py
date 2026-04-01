@@ -7,30 +7,30 @@ from flask_mail import Mail, Message
 
 
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path="/static")
-app.secret_key = 'secret123'
+app.secret_key = os.getenv('FLASK_SECRET_KEY', 'dev-secret-key-change-me')
 
 with open(os.path.join(os.path.dirname(__file__), 'data.json'), 'r', encoding='utf-8') as f:
     portfolio_data = json.load(f)
 
 
 app.config.update(
-    MAIL_SERVER='smtp.gmail.com',
-    MAIL_PORT=587,
-    MAIL_USE_TLS=True,
-    MAIL_USERNAME='drabyahamal.2@gmail.com',
-    MAIL_PASSWORD='yvighddrkoikylnr',
-    MAIL_DEFAULT_SENDER='drabyahamal.2@gmail.com',
+    MAIL_SERVER=os.getenv('MAIL_SERVER', 'smtp.gmail.com'),
+    MAIL_PORT=int(os.getenv('MAIL_PORT', '587')),
+    MAIL_USE_TLS=os.getenv('MAIL_USE_TLS', 'true').lower() == 'true',
+    MAIL_USERNAME=os.getenv('MAIL_USERNAME', ''),
+    MAIL_PASSWORD=os.getenv('MAIL_PASSWORD', ''),
+    MAIL_DEFAULT_SENDER=os.getenv('MAIL_DEFAULT_SENDER', os.getenv('MAIL_USERNAME', '')),
 )
 mail = Mail(app)
 
 
 
 db_config = {
-    'host' : '127.0.0.1',
-    'user' : 'root',
-    'password' : 'MySql.com@1',
-    'database' : 'porfolio',
-    'port' : '3306'
+    'host': os.getenv('DB_HOST', '127.0.0.1'),
+    'user': os.getenv('DB_USER', 'root'),
+    'password': os.getenv('DB_PASSWORD', ''),
+    'database': os.getenv('DB_NAME', 'porfolio'),
+    'port': int(os.getenv('DB_PORT', '3306')),
 }
 
 
@@ -80,7 +80,7 @@ def contact():
                 try:
                     mail_message = Message(
                         subject=f"New Contact Message: {subject}",
-                        recipients=['drabyahamal.2@gmail.com'],
+                        recipients=[os.getenv('MAIL_TO_EMAIL', 'drabyahamal.2@gmail.com')],
                         reply_to=email,
                     )
                     mail_message.body = (
