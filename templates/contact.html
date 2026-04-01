@@ -6,5 +6,81 @@
 {% endblock %}
 
 {% block main %}
-<h1>This is contact page</h1>
+<!--IntroContact-->
+<section class="about-secton py-5">
+    <div class="container">
+        <p class="narrate mb-2">LET'S CONNECT</p>
+        <h1 class="section-head text-light mb-4 about-head fw-bold">Contact Me</h1>
+        <div class="col-lg-6 about-desc">Have an opportunity, a project, or just want to hello? I'd love to hear from you.</div>
+    </div>
+</section>
+
+<!--Contact Form-->
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-12 col-lg-5">
+                <div class="contact-panel h-100">
+                    <h2 class="contact-subhead text-light mb-3">Get in touch</h2>
+                    <p class="contact-intro mb-4">I am open to internships, collaborative projects, and freelance opportunities. Feel free to reach out any time.</p>
+
+                    <div class="contact-item mb-3">
+                        <span class="contact-item-icon" aria-hidden="true"><i class="bi bi-geo-alt-fill"></i></span>
+                        <div>
+                            <p class="contact-item-label mb-1">Location</p>
+                            <p class="contact-item-value mb-0">{{ data.location }}</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item mb-3">
+                        <span class="contact-item-icon" aria-hidden="true"><i class="bi bi-envelope-fill"></i></span>
+                        <div>
+                            <p class="contact-item-label mb-1">Email</p>
+                            <a class="contact-item-value contact-link" href="mailto:{{ data.email }}">{{ data.email }}</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item mb-0">
+                        <span class="contact-item-icon" aria-hidden="true"><i class="bi bi-linkedin"></i></span>
+                        <div>
+                            <p class="contact-item-label mb-1">LinkedIn</p>
+                            <a class="contact-item-value contact-link" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">Connect with me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Form-->
+            <div class="col-12 col-lg-7">
+                <form class="contact-form-card h-100" action="#" method="post">
+                    {% if status_message %}
+                    <div class="alert {% if status_type == 'success' %}alert-success{% else %}alert-danger{% endif %} mb-4" role="alert">
+                        {{ status_message }}
+                    </div>
+                    {% endif %}
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label class="contact-label" for="name">Name</label>
+                            <input class="contact-input" type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="contact-label" for="email">Email</label>
+                            <input class="contact-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="contact-label" for="subject">Subject</label>
+                            <input class="contact-input" type="text" id="subject" name="subject" placeholder="What is this about?" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="contact-label" for="message">Message</label>
+                            <textarea class="contact-input contact-textarea" id="message" name="message" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="contact-submit-btn">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
