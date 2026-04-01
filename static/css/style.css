@@ -437,3 +437,152 @@ a{
   font-size: 64px;
   text-align: justify;
  }
+
+ /* EDUCATION */
+ .education-grid{
+  align-items: stretch;
+ }
+
+ .edu-card{
+  background: #121216;
+  border: 1px solid #2a2a30;
+  border-radius: 20px;
+  padding: 1.4rem;
+  height: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  will-change: transform;
+ }
+
+ .edu-date{
+  display: inline-flex;
+  border: 1px solid rgba(240, 192, 64, 0.35);
+  border-radius: 999px;
+  background: rgba(240, 192, 64, 0.09);
+  color: #f0c040;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 0.7rem;
+  margin-bottom: 0.9rem;
+ }
+
+ .edu-degree{
+  font-size: 1.2rem;
+  line-height: 1.35;
+  margin-bottom: 0.55rem;
+ }
+
+ .edu-location{
+  color: gray;
+  font-size: 0.95rem;
+ }
+
+ @media (max-width: 767.98px) {
+  .about-head{
+   font-size: 44px;
+  }
+
+  .edu-card{
+   padding: 1.1rem;
+   
+  }
+
+  .edu-degree{
+   font-size: 1.05rem;
+  }
+
+  .edu-location{
+   font-size: 0.9rem;
+  }
+ }
+.edu-card:hover{
+  border-color: #f0c040;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+}
+
+/* REFERENCES */
+.reference-grid {
+  align-items: stretch;
+}
+
+.ref-card {
+  background: linear-gradient(160deg, #141417 0%, #111114 100%);
+  border: 1px solid #2a2a30;
+  border-radius: 20px;
+  padding: 1.25rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ref-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(92, 143, 255, 0.65);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ref-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(240, 192, 64, 0.1);
+  border: 1px solid rgba(240, 192, 64, 0.28);
+  color: #f0c040;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ref-avatar i {
+  font-size: 1.35rem;
+}
+
+.ref-info {
+  min-width: 0;
+}
+
+.ref-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.18rem;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.ref-title {
+  color: #c2c4cb;
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+}
+
+.ref-contact {
+  color: #a7a9b2;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.ref-contact i {
+  color: #f0c040;
+}
+
+@media (max-width: 767.98px) {
+  .ref-card {
+    padding: 1rem;
+  }
+
+  .ref-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ref-name {
+    font-size: 1.05rem;
+  }
+
+  .ref-title,
+  .ref-contact {
+    font-size: 0.86rem;
+  }
+}

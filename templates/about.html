@@ -15,4 +15,89 @@
         <div class="col-lg-6 about-desc">{{ data.summary }}</div>
     </div>
 </section><hr class="line">
+
+<!--Education-->
+<section class="education-section py-5">
+    <div class="container">
+        <p class="narrate mb-2">ACADEMIC BACKGROUND</p>
+        <h1 class="section-head text-light mb-4 fw-bold">Education</h1>
+        <div class="row g-4 education-grid">
+        {% for edu in data.education %}
+        <div class="col-12 col-lg-6">
+            <article class="edu-card h-100">
+                <div class="edu-date">{{ edu.period }}</div>
+                <h3 class="edu-degree text-light">{{ edu.degree }}</h3>
+                <p class="edu-location mb-3"><i class="bi bi-geo-alt-fill me-2"></i>{{ edu.institution }}</p>
+                <ul class="exp-bullets mb-0">
+                    {% for list in edu.points %}
+                    <li>{{ list }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+        </div>
+        {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+<!--SKILLS-->
+<section class="skills-section py-5">
+  <div class="container">
+    <p class="narrate mb-2">CAPABILITIES</p>
+    <h2 class="section-head text-light mb-4">Skills</h2>
+
+    <div class="row g-4">
+      {% for category, skill_list in data.skills.items() %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="skills-card h-100">
+          <div class="skills-card-top mb-3">
+            <span class="skills-icon" aria-hidden="true">
+              {% if category == 'Technical' %}
+              <i class="bi bi-code-slash"></i>
+              {% elif category == 'Design & Media' %}
+              <i class="bi bi-palette2"></i>
+              {% else %}
+              <i class="bi bi-people"></i>
+              {% endif %}
+            </span>
+            <h3 class="skill-head mb-0">{{ category }}</h3>
+          </div>
+
+          <div class="skills-chip-wrap">
+            {% for skill in skill_list %}
+            <span class="tool-chip">{{ skill }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!--Reference-->
+<section class="reference-section py-5">
+    <div class="container">
+        <p class="narrate mb-2">PEOPLE WHO KNOW MY WORK</p>
+        <h1 class="section-head text-light mb-4 fw-bold">References</h1>
+    <div class="row g-4 reference-grid">
+            {% for ref in data.references %}
+            <div class="col-12 col-lg-6">
+        <article class="ref-card h-100 d-flex align-items-start gap-3">
+          <span class="ref-avatar" aria-hidden="true">
+            <i class="bi bi-person-circle"></i>
+          </span>
+                    <div class="ref-info">
+            <h3 class="ref-name text-light">{{ ref.name }}</h3>
+                        <h4 class="ref-title">{{ ref.title }}</h4>
+            <p class="ref-contact mb-2"><i class="bi bi-telephone-fill me-2"></i>{{ ref.phone }}</p>
+            <p class="ref-contact mb-0"><i class="bi bi-envelope-fill me-2"></i>{{ ref.email }}</p>
+                    </div>
+        </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
