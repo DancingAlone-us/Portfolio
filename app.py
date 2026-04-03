@@ -2,7 +2,7 @@ import os
 import json
 import re
 import smtplib
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory, abort
 from flask_cors import CORS
 import mysql.connector
 from flask_mail import Mail, Message
@@ -86,6 +86,20 @@ def about():
 @app.route('/projects')
 def projects():
     return render_template("projects.html", data=portfolio_data)
+
+
+@app.route('/download-cv')
+def download_cv():
+    cv_dir = os.path.join(BASE_DIR, 'static')
+    cv_file = 'cv.pdf'
+    if not os.path.exists(os.path.join(cv_dir, cv_file)):
+        abort(404)
+    return send_from_directory(
+        cv_dir,
+        cv_file,
+        as_attachment=True,
+        download_name='Drabya_Hamal_CV.pdf'
+    )
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
