@@ -811,3 +811,62 @@ a{
     font-size: 0.9rem;
   }
 }
+
+/* ============================================================
+   scroll-reveal.css
+   Scroll-triggered entrance animations — Drabya Hamal Portfolio
+   ============================================================ */
+
+
+/* ── 1. Base hidden state ──────────────────────────────────────────────── */
+/*
+   All animated elements start invisible & offset.
+   The JS adds .sr-hidden; the variant data-attribute selects the direction.
+*/
+
+.sr-hidden {
+  opacity: 0;
+  /* duration + easing shared by every variant */
+  transition:
+    opacity      0.65s cubic-bezier(0.22, 1, 0.36, 1) var(--sr-delay, 0ms),
+    transform    0.65s cubic-bezier(0.22, 1, 0.36, 1) var(--sr-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* ── 2. Variant: fade-up (default) ─────────────────────────────────────── */
+.sr-hidden[data-sr-variant="fade-up"] {
+  transform: translateY(36px);
+}
+
+/* ── 3. Variant: fade-left (slides in from the right) ──────────────────── */
+.sr-hidden[data-sr-variant="fade-left"] {
+  transform: translateX(40px);
+}
+
+/* ── 4. Variant: fade-right (slides in from the left) ──────────────────── */
+.sr-hidden[data-sr-variant="fade-right"] {
+  transform: translateX(-40px);
+}
+
+/* ── 5. Revealed state ─────────────────────────────────────────────────── */
+/*
+   JS adds .sr-visible when the element enters the viewport.
+   Reset to natural position — transition does the rest.
+*/
+.sr-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+/* ── 6. Reduce-motion override ─────────────────────────────────────────── */
+/*
+   Users who prefer reduced motion see content immediately,
+   with no movement — just a quick fade if anything.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .sr-hidden {
+    transition: opacity 0.2s linear !important;
+    transform: none !important;
+  }
+}
