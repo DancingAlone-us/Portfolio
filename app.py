@@ -3,6 +3,7 @@ import json
 import re
 import smtplib
 from flask import Flask, render_template, request
+from flask_cors import CORS
 import mysql.connector
 from flask_mail import Mail, Message
 
@@ -46,6 +47,9 @@ def get_env_value(key, default=''):
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path="/static")
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'dev-secret-key-change-me')
 
+# ✅ CORS enabled so GitHub Pages frontend can talk to this backend
+CORS(app)
+
 with open(os.path.join(BASE_DIR, 'data.json'), 'r', encoding='utf-8') as f:
     portfolio_data = json.load(f)
 
@@ -61,15 +65,14 @@ app.config.update(
 mail = Mail(app)
 
 
-
+# ✅ Updated to use Railway's variable names
 db_config = {
-    'host': os.getenv('DB_HOST', '127.0.0.1'),
-    'user': os.getenv('DB_USER', 'root'),
-    'password': os.getenv('DB_PASSWORD', ''),
-    'database': os.getenv('DB_NAME', 'porfolio'),
-    'port': int(os.getenv('DB_PORT', '3306')),
+    'host': os.getenv('MYSQLHOST', '127.0.0.1'),
+    'user': os.getenv('MYSQLUSER', 'root'),
+    'password': os.getenv('MYSQLPASSWORD', ''),
+    'database': os.getenv('MYSQLDATABASE', ''),
+    'port': int(os.getenv('MYSQLPORT', '3306')),
 }
-
 
 
 @app.route('/')
@@ -84,16 +87,16 @@ def about():
 def projects():
     return render_template("projects.html", data=portfolio_data)
 
-@app.route('/contact', methods = ['GET', 'POST'])
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     status_message = None
     status_type = None
 
     if request.method == 'POST':
         name = request.form.get('name', '').strip()
-        email = request.form.get('email','').strip()
+        email = request.form.get('email', '').strip()
         subject = request.form.get('subject', '').strip()
-        message = request.form.get('message','').strip()
+        message = request.form.get('message', '').strip()
 
         if not all([name, email, subject, message]):
             status_message = "Please fill out all fields before submitting."
@@ -169,5 +172,7 @@ def contact():
         status_type=status_type
     )
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    # ✅ Debug mode off for production
+    app.run(debug=False)
