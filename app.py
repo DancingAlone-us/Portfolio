@@ -1,25 +1,62 @@
 import os
 import json
 import re
+import smtplib
 from flask import Flask, render_template, request
 import mysql.connector
 from flask_mail import Mail, Message
 
 
+def load_env_file(file_path):
+    """Load KEY=VALUE pairs into environment variables if not already set."""
+    if not os.path.exists(file_path):
+        return
+
+    with open(file_path, 'r', encoding='utf-8') as env_file:
+        for raw_line in env_file:
+            line = raw_line.strip()
+            if not line or line.startswith('#') or '=' not in line:
+                continue
+
+            key, value = line.split('=', 1)
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            os.environ.setdefault(key, value)
+
+
+BASE_DIR = os.path.dirname(__file__)
+load_env_file(os.path.join(BASE_DIR, '.env'))
+load_env_file(os.path.join(BASE_DIR, '.env.example'))
+
+
+def get_env_value(key, default=''):
+    """Read an env var and treat obvious placeholders as missing values."""
+    value = os.getenv(key, default)
+    if value is None:
+        return default
+
+    cleaned = value.strip()
+    lowered = cleaned.lower()
+    placeholder_markers = ('your-', 'your_', 'your', 'example', 'changeme', 'replace')
+    if any(marker in lowered for marker in placeholder_markers):
+        return default
+    return cleaned
+
+
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path="/static")
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'dev-secret-key-change-me')
 
-with open(os.path.join(os.path.dirname(__file__), 'data.json'), 'r', encoding='utf-8') as f:
+with open(os.path.join(BASE_DIR, 'data.json'), 'r', encoding='utf-8') as f:
     portfolio_data = json.load(f)
 
 
 app.config.update(
-    MAIL_SERVER=os.getenv('MAIL_SERVER', 'smtp.gmail.com'),
-    MAIL_PORT=int(os.getenv('MAIL_PORT', '587')),
-    MAIL_USE_TLS=os.getenv('MAIL_USE_TLS', 'true').lower() == 'true',
-    MAIL_USERNAME=os.getenv('MAIL_USERNAME', ''),
-    MAIL_PASSWORD=os.getenv('MAIL_PASSWORD', ''),
-    MAIL_DEFAULT_SENDER=os.getenv('MAIL_DEFAULT_SENDER', os.getenv('MAIL_USERNAME', '')),
+    MAIL_SERVER=get_env_value('MAIL_SERVER', 'smtp.gmail.com'),
+    MAIL_PORT=int(get_env_value('MAIL_PORT', '587')),
+    MAIL_USE_TLS=get_env_value('MAIL_USE_TLS', 'true').lower() == 'true',
+    MAIL_USERNAME=get_env_value('MAIL_USERNAME', ''),
+    MAIL_PASSWORD=get_env_value('MAIL_PASSWORD', ''),
+    MAIL_DEFAULT_SENDER=get_env_value('MAIL_DEFAULT_SENDER', get_env_value('MAIL_USERNAME', '')),
 )
 mail = Mail(app)
 
@@ -78,9 +115,14 @@ def contact():
                 connection.commit()
 
                 try:
+                    if not app.config.get('MAIL_USERNAME') or not app.config.get('MAIL_PASSWORD'):
+                        raise ValueError(
+                            'MAIL_USERNAME or MAIL_PASSWORD is missing/placeholder in .env'
+                        )
+
                     mail_message = Message(
                         subject=f"New Contact Message: {subject}",
-                        recipients=[os.getenv('MAIL_TO_EMAIL', 'drabyahamal.2@gmail.com')],
+                        recipients=[get_env_value('MAIL_TO_EMAIL', 'drabyahamal.2@gmail.com')],
                         reply_to=email,
                     )
                     mail_message.body = (
@@ -92,7 +134,23 @@ def contact():
                     mail.send(mail_message)
                     status_message = "Your message has been saved and emailed successfully."
                     status_type = "success"
+                except smtplib.SMTPAuthenticationError:
+                    status_message = (
+                        "Your message was saved, but email login failed. "
+                        "Check MAIL_USERNAME and Gmail app password in .env."
+                    )
+                    status_type = "error"
+                except smtplib.SMTPException:
+                    status_message = (
+                        "Your message was saved, but the mail server rejected the request. "
+                        "Verify MAIL_SERVER, MAIL_PORT, and TLS settings."
+                    )
+                    status_type = "error"
+                except ValueError as exc:
+                    status_message = f"Your message was saved, but email is not configured: {exc}."
+                    status_type = "error"
                 except Exception:
+                    app.logger.exception('Unexpected email send failure')
                     status_message = "Your message was saved, but the email could not be sent."
                     status_type = "error"
             except mysql.connector.Error:
