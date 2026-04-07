@@ -72,6 +72,7 @@ db_config = {
     'password': os.getenv('MYSQLPASSWORD', ''),
     'database': os.getenv('MYSQLDATABASE', ''),
     'port': int(os.getenv('MYSQLPORT', '3306')),
+    'ssl_disabled': False,    # ← add this for Aiven SSL
 }
 
 
