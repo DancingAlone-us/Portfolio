@@ -92,7 +92,8 @@ def projects():
 @app.route('/download-cv')
 def download_cv():
     cv_dir = os.path.join(BASE_DIR, 'static')
-    cv_file = 'cv.pdf'
+    # static/ contains the file named "Drabya Hamal CV.pdf"
+    cv_file = 'Drabya Hamal CV.pdf'
     if not os.path.exists(os.path.join(cv_dir, cv_file)):
         abort(404)
     return send_from_directory(
