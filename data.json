@@ -7,6 +7,7 @@
 
   "skills": {
     "Technical": ["HTML", "CSS", "JavaScript", "Python", "Flask", "Git", "Responsive Design"],
+    "Data & Analytics":["Power BI", "Pandas", "Numpy", "Matplotlib"],
     "Design & Media": ["Basic Photoshop", "Adobe Premiere Pro", "Canva", "Runway", "Interaction Design"],
     "Soft Skills": ["Public Speaking", "Critical Thinking", "Time Management"]
   },
@@ -61,6 +62,13 @@
       "tech": ["HTML", "CSS", "JavaScript", "Python", "Flask"],
       "description": "A complete full-stack web application built as part of my BSc coursework, covering front-end UI and a Flask-powered back end.",
       "icon": "bi-globe2"
+    },
+    {
+      "title":"Movie Industry Insight & Dashboard",
+      "tech":["Power BI","Numpy","Pandas","Matplotlib"],
+      "description":"A simple data analyst project, covering visualization via PowerBI and Matplotlib and python libraries like Numpy and Pandas",
+      "icon":"bi-bar-chart"
+
     },
     {
       "title": "Car Company CLI Software",
