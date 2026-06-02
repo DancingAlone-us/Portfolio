@@ -4,8 +4,10 @@ import re
 import smtplib
 from flask import Flask, render_template, request, send_from_directory, abort
 from flask_cors import CORS
-import mysql.connector
+import psycopg2
 from flask_mail import Mail, Message
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def load_env_file(file_path):
@@ -65,15 +67,14 @@ app.config.update(
 mail = Mail(app)
 
 
-# ✅ Updated to use Railway's variable names
-db_config = {
-    'host': os.getenv('MYSQLHOST', '127.0.0.1'),
-    'user': os.getenv('MYSQLUSER', 'root'),
-    'password': os.getenv('MYSQLPASSWORD', ''),
-    'database': os.getenv('MYSQLDATABASE', ''),
-    'port': int(os.getenv('MYSQLPORT', '3306')),
-    'ssl_disabled': False,    # ← add this for Aiven SSL
-}
+# ✅ Neon PostgreSQL connection string from environment
+DATABASE_URL = os.getenv('DATABASE_URL', '')
+
+
+def get_db_connection():
+    """Create and return a new Neon PostgreSQL connection."""
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    return conn
 
 
 @app.route('/')
@@ -92,7 +93,6 @@ def projects():
 @app.route('/download-cv')
 def download_cv():
     cv_dir = os.path.join(BASE_DIR, 'static')
-    # static/ contains the file named "Drabya Hamal CV.pdf"
     cv_file = 'Drabya Hamal CV.pdf'
     if not os.path.exists(os.path.join(cv_dir, cv_file)):
         abort(404)
@@ -124,7 +124,7 @@ def contact():
             connection = None
             cursor = None
             try:
-                connection = mysql.connector.connect(**db_config)
+                connection = get_db_connection()
                 cursor = connection.cursor()
                 insert_query = (
                     "INSERT INTO response (name, email, subject, message) "
@@ -172,13 +172,13 @@ def contact():
                     app.logger.exception('Unexpected email send failure')
                     status_message = "Your message was saved, but the email could not be sent."
                     status_type = "error"
-            except mysql.connector.Error:
+            except psycopg2.Error:
                 status_message = "Sorry, there was a problem sending your message. Please try again."
                 status_type = "error"
             finally:
                 if cursor is not None:
                     cursor.close()
-                if connection is not None and connection.is_connected():
+                if connection is not None and not connection.closed:
                     connection.close()
 
     return render_template(
@@ -190,5 +190,4 @@ def contact():
 
 
 if __name__ == '__main__':
-    # ✅ Debug mode off for production
     app.run(debug=False)
