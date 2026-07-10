@@ -21,12 +21,20 @@
         <div class="row g-4 project-grid">
             {% for proj in data.projects %}
             <div class="col-12 col-lg-6">
-                <article class="proj-card h-100">
+                <article class="proj-card h-100 position-relative">
                     <div class="proj-top d-flex align-items-center gap-3 mb-3">
                         <span class="proj-icon" aria-hidden="true">
                             <i class="bi {{ proj.icon }}"></i>
                         </span>
-                        <h3 class="proj-title text-light mb-0">{{ proj.title }}</h3>
+                        <h3 class="proj-title text-light mb-0">
+                            {% if proj.link %}
+                            <a href="{{ proj.link }}" target="_blank" rel="noopener noreferrer" class="stretched-link text-light text-decoration-none">
+                                {{ proj.title }}
+                            </a>
+                            {% else %}
+                            {{ proj.title }}
+                            {% endif %}
+                        </h3>
                     </div>
                     <p class="proj-desc mb-3">{{ proj.description }}</p>
                     <div class="proj-tech-wrap">

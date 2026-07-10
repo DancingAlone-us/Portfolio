@@ -61,13 +61,15 @@
       "title": "Hotel Booking Site - Full Stack",
       "tech": ["HTML", "CSS", "JavaScript", "Python", "Flask"],
       "description": "A complete full-stack web application to simplify hotel booking,  built as part of my BSc coursework, covering front-end UI and a Flask-powered back end.",
-      "icon": "bi-globe2"
+      "icon": "bi-globe2",
+      "link": "https://24071135.tbcstudentserver.com/"
     },
     {
       "title":"Movie Industry Insight & Dashboard",
       "tech":["Power BI","Numpy","Pandas","Matplotlib"],
       "description":"A simple data analyst project, covering visualization via PowerBI and Matplotlib and python libraries like Numpy and Pandas",
-      "icon":"bi-bar-chart"
+      "icon":"bi-bar-chart",
+      "link":"https://github.com/DancingAlone-us/MovieAnalyst"
 
     },
     {
