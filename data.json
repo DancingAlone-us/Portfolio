@@ -58,9 +58,9 @@
 
   "projects": [
     {
-      "title": "Full-Stack Website",
+      "title": "Hotel Booking Site - Full Stack",
       "tech": ["HTML", "CSS", "JavaScript", "Python", "Flask"],
-      "description": "A complete full-stack web application built as part of my BSc coursework, covering front-end UI and a Flask-powered back end.",
+      "description": "A complete full-stack web application to simplify hotel booking,  built as part of my BSc coursework, covering front-end UI and a Flask-powered back end.",
       "icon": "bi-globe2"
     },
     {
