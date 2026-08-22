@@ -64,6 +64,15 @@
       "icon": "bi-globe2",
       "link": "https://24071135.tbcstudentserver.com/"
     },
+
+        {
+      "title": "Movie Tracking Site - Full Stack",
+      "tech": ["HTML", "CSS", "JavaScript", "Python", "Flask"],
+      "description": "A complete full-stack web application where users can keep track of movies they have watched, covering front-end UT and a Flask-powered back-end",
+      "icon": "bi-globe2",
+      "link": "https://notmovies.me/"
+    },
+
     {
       "title":"Movie Industry Insight & Dashboard",
       "tech":["Power BI","Numpy","Pandas","Matplotlib"],
